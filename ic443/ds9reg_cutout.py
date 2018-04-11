@@ -5,7 +5,7 @@ import pyregion._region_filter as filter
 
 
 # User input: infile, outfile, region_name, binsize
-def ds9reg_cutout(infile, outfile, region_name, binsize):
+def ds9reg_cutout(path,infile, outfile, region_name, binsize):
 
     hdu_orig = pyfits.open(infile)[0]
     data = hdu_orig.data
@@ -23,4 +23,4 @@ def ds9reg_cutout(infile, outfile, region_name, binsize):
     hdulist[0].data = data
     norm = np.sum(hdulist[0].data)*(np.pi/180)**2*(binsize**2)
     hdulist[0].data = hdulist[0].data/norm
-    hdulist[0].writeto(outfile)
+    hdulist[0].writeto(path + '/' + outfile + '.fits')

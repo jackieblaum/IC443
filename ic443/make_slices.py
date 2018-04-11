@@ -78,5 +78,6 @@ def make_slices(path, infile, sample_file, min_slice, max_slice, clean, threshol
                         #or (_distance(np.ceil(float(wmap_image[0].header['NAXIS2'])/2)-15,np.ceil(float(wmap_image[0].header['NAXIS1']/2)+20), x, y[0]) < 12)
                     wmap_image[0].data[x,y[0]]=0
 
+        norm = np.sum(wmap_image[0].data)*(np.pi/180)**2 * (0.025**2)
+        wmap_image[0].data = wmap_image[0].data/norm
         wmap_image[0].writeto('%s%i-%i_clean.fits' % (path, int(min_slice), int(max_slice)), overwrite=True)
-

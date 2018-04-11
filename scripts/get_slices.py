@@ -13,7 +13,7 @@ if __name__ == "__main__":
     parser.add_argument('--input', type=str, help='Input FITS file', required=True)
     parser.add_argument('--sample', type=str, help='Sample file for WCS', required=True)
     parser.add_argument('--path', type=str, help='Path to the directory where the output will be stored', required=True)
-    parser.add_argument('--threshold', type=int, help='Counts cutoff in order to trim the image', required=False, default=0)
+    parser.add_argument('--threshold', type=float, help='Counts cutoff in order to trim the image', required=False, default=0)
     parser.add_argument('--clean', type=bool, help='Do you want the image cleaned up?', required=False, default=True)
     parser.add_argument('--radius', type=int, help='Largest radius of the main structure', required=False, default=1000)
     args = parser.parse_args()
